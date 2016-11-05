@@ -46,6 +46,8 @@ path = 'Output/Android/app/src/main/AndroidManifest.xml'
 lines = IO.readlines(path).map do |line|
   if line.include? 'android:label='
 	  "android:label=\"#{app_name}\""
+  elsif line.include? 'deeplinkScheme'
+    "<data android:scheme=\"#{deeplink_scheme}\" />"
   else
   	line
   end

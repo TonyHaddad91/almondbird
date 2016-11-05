@@ -18,6 +18,7 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -79,10 +80,12 @@ public class MainActivity extends Activity {
             public void onProgressChanged(WebView view, int newProgress) {
                 super.onProgressChanged(view, newProgress);
                 if (newProgress == 100) {
+                    handleDeepLink(getIntent());
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
                             splash.setVisibility(View.GONE);
+
                         }
                     }, 200);
                 }
@@ -141,7 +144,7 @@ public class MainActivity extends Activity {
         });
 
         try {
-            webView.loadUrl(jsonObject.getString("websiteURL"));
+            loadUrl(jsonObject.getString("websiteURL"));
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -206,5 +209,22 @@ public class MainActivity extends Activity {
                 mUM = null;
             }
         }
+    }
+
+    public void handleDeepLink(Intent intent) {
+
+        if (intent == null)
+            intent = getIntent();
+        if (intent.getAction() != null && intent.getAction().equals(Intent.ACTION_VIEW)) {
+            DeepLinksHandler.getInstance().handleLink(intent.getDataString(), this);
+            intent.setAction(null);
+        }
+    }
+
+
+    public void loadUrl(String url)
+    {
+        if(webView!=null && !android.text.TextUtils.isEmpty(url))
+        webView.loadUrl(url);
     }
 }
