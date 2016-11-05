@@ -12,8 +12,6 @@
 @implementation AssetsURLProtocol
 
 + (BOOL)canInitWithRequest:(NSURLRequest *)request {
-    NSLog(@"%@", request);
-
     return [self mimeTypeForExtension:request.URL.path.pathExtension] && [self localWebsiteAssetPathForRequest:request];
 }
 
@@ -54,6 +52,8 @@
         return @"text/css";
     } else if ([@[@"js"] containsObject:extension]) {
         return @"text/javascript";
+    } else if ([@[@"woff", @"woff2", @"ttf", @"eot"] containsObject:extension]) {
+        return @"font/opentype";
     } else {
         return nil;
     }

@@ -9,19 +9,19 @@ FileUtils.mkdir('Output')
 FileUtils.copy_entry('Android', 'Output/Android', false, false, false)
 FileUtils.copy_entry('iOS', 'Output/iOS', false, false, false)
 
-puts 'Reading config from Input/Assets/config.json'
-
 # Read config
+puts 'Reading config from Input/Assets/config.json'
 json = JSON.parse(File.read('Input/Assets/config.json'))
-app_id        = json['appId']
-app_name      = json['appName']
-version_code  = json['versionCode']
-version_name  = json['versionName']
-splash_color  = json['splashColor']
+app_id          = json['appId']
+app_name        = json['appName']
+version_code    = json['versionCode']
+version_name    = json['versionName']
+splash_color    = json['splashColor']
+deeplink_scheme = json['deeplinkScheme']
 
-puts 'Generating Android project in Output/Android'
 
 # Generate Android project
+puts 'Generating Android project in Output/Android'
 FileUtils.copy_entry('Input/Assets', 'Output/Android/app/src/main/Assets', false, false, true)
 FileUtils.copy_entry('Input/android_icon', 'Output/Android/app/src/main/res', false, false, true)
 FileUtils.copy_entry('Input/android_splash', 'Output/Android/app/src/main/res/', false, false, false)
@@ -72,9 +72,8 @@ end
 # )
 # puts 'Generating Android APK in Output/'
 
-puts 'Generating iOS project in Output/iOS'
-
 # Generate iOS project
+puts 'Generating iOS project in Output/iOS'
 FileUtils.copy_entry('Input/Assets', 'Output/iOS/SmartWebView/SmartWebView/Assets', false, false, true)
 FileUtils.copy_entry('Input/ios_icon', 'Output/iOS/SmartWebView/SmartWebView/Assets.xcassets/AppIcon.appiconset', false, false, true)
 FileUtils.copy_entry('Input/ios_splash', 'Output/iOS/SmartWebView/SmartWebView/Assets.xcassets/launch-icon.imageset', false, false, true)
@@ -101,6 +100,17 @@ lines = IO.readlines('Output/iOS/SmartWebView/SmartWebView/Base.lproj/LaunchScre
   line
 end
 File.open('Output/iOS/SmartWebView/SmartWebView/Base.lproj/LaunchScreen.storyboard', 'w') do |file|
+  file.puts lines
+end
+
+lines = IO.readlines('Output/iOS/SmartWebView/SmartWebView/Info.plist').map do |line|
+  if line.include? 'smartwebviewscheme'
+    "<string>#{deeplink_scheme}</string>"
+  else
+    line
+  end
+end
+File.open('Output/iOS/SmartWebView/SmartWebView/Info.plist', 'w') do |file|
   file.puts lines
 end
 

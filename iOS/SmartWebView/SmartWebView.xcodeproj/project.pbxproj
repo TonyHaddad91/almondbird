@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE14FCD71DCD874E000804F8 /* DeeplinkingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE14FCD61DCD874E000804F8 /* DeeplinkingManager.m */; };
 		CEFAA8F11D950DA200970CF2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFAA8EA1D950DA200970CF2 /* AppDelegate.m */; };
 		CEFAA8F21D950DA200970CF2 /* AssetsURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFAA8EC1D950DA200970CF2 /* AssetsURLProtocol.m */; };
 		CEFAA8F31D950DA200970CF2 /* ConfigManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CEFAA8EE1D950DA200970CF2 /* ConfigManager.m */; };
@@ -19,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE14FCD51DCD874E000804F8 /* DeeplinkingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DeeplinkingManager.h; path = SmartWebView/DeeplinkingManager.h; sourceTree = SOURCE_ROOT; };
+		CE14FCD61DCD874E000804F8 /* DeeplinkingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DeeplinkingManager.m; path = SmartWebView/DeeplinkingManager.m; sourceTree = SOURCE_ROOT; };
 		CEAA92551D93BBB500E4D27F /* SmartWebView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartWebView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEFAA8E91D950DA200970CF2 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = SmartWebView/AppDelegate.h; sourceTree = SOURCE_ROOT; };
 		CEFAA8EA1D950DA200970CF2 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = SmartWebView/AppDelegate.m; sourceTree = SOURCE_ROOT; };
@@ -50,7 +53,7 @@
 		CEAA924C1D93BBB500E4D27F = {
 			isa = PBXGroup;
 			children = (
-				CEAA92571D93BBB500E4D27F /* WebViewTest */,
+				CEAA92571D93BBB500E4D27F /* SmartWebView */,
 				CEAA92561D93BBB500E4D27F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -63,7 +66,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		CEAA92571D93BBB500E4D27F /* WebViewTest */ = {
+		CEAA92571D93BBB500E4D27F /* SmartWebView */ = {
 			isa = PBXGroup;
 			children = (
 				CEFAA8E91D950DA200970CF2 /* AppDelegate.h */,
@@ -72,10 +75,13 @@
 				CEFAA8EC1D950DA200970CF2 /* AssetsURLProtocol.m */,
 				CEFAA8ED1D950DA200970CF2 /* ConfigManager.h */,
 				CEFAA8EE1D950DA200970CF2 /* ConfigManager.m */,
+				CE14FCD51DCD874E000804F8 /* DeeplinkingManager.h */,
+				CE14FCD61DCD874E000804F8 /* DeeplinkingManager.m */,
 				CEFAA8EF1D950DA200970CF2 /* WebViewController.h */,
 				CEFAA8F01D950DA200970CF2 /* WebViewController.m */,
 				CEAA92581D93BBB500E4D27F /* Supporting Files */,
 			);
+			name = SmartWebView;
 			path = WebViewTest;
 			sourceTree = "<group>";
 		};
@@ -163,6 +169,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE14FCD71DCD874E000804F8 /* DeeplinkingManager.m in Sources */,
 				CEFAA8FC1D950DD100970CF2 /* main.m in Sources */,
 				CEFAA8F11D950DA200970CF2 /* AppDelegate.m in Sources */,
 				CEFAA8F41D950DA200970CF2 /* WebViewController.m in Sources */,
@@ -284,7 +291,7 @@
 				INFOPLIST_FILE = SmartWebView/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.duriana.smartwebview;
+				PRODUCT_BUNDLE_IDENTIFIER = com.template.smartwebview;
 				PRODUCT_NAME = SmartWebView;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -297,7 +304,7 @@
 				INFOPLIST_FILE = SmartWebView/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.duriana.smartwebview;
+				PRODUCT_BUNDLE_IDENTIFIER = com.template.smartwebview;
 				PRODUCT_NAME = SmartWebView;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -22,4 +22,8 @@
     [self.webView loadRequest:[NSURLRequest requestWithURL:[ConfigManager sharedInstance].websiteURL]];
 }
 
+- (void)changeURL:(NSURL *)url {
+    [self.webView loadRequest:[NSURLRequest requestWithURL:url]];
+}
+
 @end
