@@ -30,7 +30,7 @@
         NSURLComponents *urlComponents = [NSURLComponents componentsWithURL:url resolvingAgainstBaseURL:NO];
         NSString *redirectionPath = [self valueForKey:@"path" fromQueryItems:urlComponents.queryItems];
         if (redirectionPath) {
-            NSString *redirectionString = [[[ConfigManager sharedInstance] websiteURL].description stringByAppendingPathComponent:redirectionPath];
+            NSString *redirectionString = [[NSString stringWithFormat:@"%@://%@", [ConfigManager sharedInstance].websiteURL.scheme, [ConfigManager sharedInstance].websiteURL.host] stringByAppendingString:redirectionPath];
             NSURL *redirectionURL = [NSURL URLWithString:redirectionString];
             [self displayURL:redirectionURL];
             return YES;
