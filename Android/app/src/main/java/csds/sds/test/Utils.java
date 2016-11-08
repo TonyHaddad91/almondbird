@@ -30,7 +30,7 @@ public class Utils {
         add(".woff");
         add(".woff2");
         add(".mp3");
-        add(".mp4");
+        add(".wav");
     }};
 
 
