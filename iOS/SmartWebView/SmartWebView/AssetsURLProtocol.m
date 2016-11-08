@@ -52,8 +52,14 @@
         return @"text/css";
     } else if ([@[@"js"] containsObject:extension]) {
         return @"text/javascript";
-    } else if ([@[@"woff", @"woff2", @"ttf", @"eot"] containsObject:extension]) {
+    } else if ([@[@"woff", @"woff2", @"ttf", @"eot", @"otf"] containsObject:extension]) {
         return @"font/opentype";
+    } else if ([@[@"mp3"] containsObject:extension]) {
+            return @"audio/mpeg";
+    } else if ([@[@"wav"] containsObject:extension]) {
+        return @"audio/vnd.wav";
+    } else if ([@[@"pdf"] containsObject:extension]) {
+        return @"application/pdf";
     } else {
         return nil;
     }
