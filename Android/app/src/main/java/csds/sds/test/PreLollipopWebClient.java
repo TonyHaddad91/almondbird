@@ -1,5 +1,8 @@
 package csds.sds.test;
 
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.webkit.WebResourceResponse;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -13,10 +16,12 @@ import java.net.URISyntaxException;
  */
 
 public class PreLollipopWebClient extends WebViewClient {
-    String domain;
+    private String domain;
+    private Context context;
 
-    public PreLollipopWebClient(String domain) {
+    public PreLollipopWebClient(String domain, Context context) {
         this.domain = domain;
+        this.context = context;
     }
 
     @Deprecated
@@ -25,10 +30,10 @@ public class PreLollipopWebClient extends WebViewClient {
 
         WebResourceResponse resourceResponse = super.shouldInterceptRequest(view, url);
         String extension = url.toString().substring(url.toString().lastIndexOf("."));
-        String path="";
+        String path = "";
         try {
             URI uri = new URI(url);
-           path= uri.getPath();
+            path = uri.getPath();
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
@@ -36,7 +41,7 @@ public class PreLollipopWebClient extends WebViewClient {
             String memeType = null;
             if (extension.contains("svg"))
                 memeType = "image/svg+xml";
-            if (!path.equals("") && Utils.isAssetExists(path.substring(1),view.getContext())) {
+            if (!path.equals("") && Utils.isAssetExists(path.substring(1), view.getContext())) {
                 try {
                     resourceResponse = new WebResourceResponse(memeType,
                             "utf-8", view.getContext().getAssets().open(path.substring(1)));
@@ -47,5 +52,18 @@ public class PreLollipopWebClient extends WebViewClient {
         }
 
         return resourceResponse;
+    }
+
+
+    @Override
+    public boolean shouldOverrideUrlLoading(WebView view, String url) {
+        if (url.contains("almondbirdpopup=true")) {
+            Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+            context.startActivity(i);
+            return true;
+        }
+
+        return super.shouldOverrideUrlLoading(view, url);
+
     }
 }

@@ -75,7 +75,6 @@ public class MainActivity extends Activity {
         }
 
         webView.setWebChromeClient(new WebChromeClient() {
-
             @Override
             public void onProgressChanged(WebView view, int newProgress) {
                 super.onProgressChanged(view, newProgress);
@@ -89,7 +88,10 @@ public class MainActivity extends Activity {
                         }
                     }, 200);
                 }
+
+
             }
+
 
             //For Android 4.2+
             public void openFileChooser(ValueCallback<Uri> uploadMsg, String acceptType, String capture) {
