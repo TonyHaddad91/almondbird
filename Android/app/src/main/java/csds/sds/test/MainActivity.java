@@ -52,10 +52,10 @@ public class MainActivity extends Activity {
             e.printStackTrace();
         }
         if (Build.VERSION.SDK_INT >= 20)
-            webView.setWebViewClient(new LollipopWebClient());
+            webView.setWebViewClient(new LollipopWebClient(getApplicationContext()));
         else
             try {
-                webView.setWebViewClient(new PreLollipopWebClient(jsonObject.getString("websiteURL")));
+                webView.setWebViewClient(new PreLollipopWebClient(jsonObject.getString("websiteURL"),getApplicationContext()));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
