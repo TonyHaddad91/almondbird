@@ -4,7 +4,7 @@ android {
     compileSdkVersion 21
     buildToolsVersion "21.0.1"
     defaultConfig {
-        applicationId "csds.sds.test"
+        applicationId "com.almonbird.template"
         minSdkVersion 17
         targetSdkVersion 21
         versionCode 1

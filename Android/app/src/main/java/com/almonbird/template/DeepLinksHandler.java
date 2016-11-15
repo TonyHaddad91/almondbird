@@ -1,4 +1,4 @@
-package csds.sds.test;
+package com.almonbird.template;
 
 import org.json.JSONException;
 import org.json.JSONObject;

@@ -1,4 +1,4 @@
-package csds.sds.test;
+package com.almonbird.template;
 
 import android.content.Context;
 import android.content.res.AssetManager;

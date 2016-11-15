@@ -1,4 +1,4 @@
-package csds.sds.test;
+package com.almonbird.template;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
@@ -18,7 +18,6 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.FrameLayout;
-import android.widget.TextView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
