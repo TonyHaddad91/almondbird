@@ -6,13 +6,14 @@
 //  Copyright © 2016 Essam. All rights reserved.
 //
 
+#import <UIKit/UIKit.h>
 #import "AssetsURLProtocol.h"
 #import "ConfigManager.h"
 
 @implementation AssetsURLProtocol
 
 + (BOOL)canInitWithRequest:(NSURLRequest *)request {
-    return [self mimeTypeForExtension:request.URL.path.pathExtension] && [self localWebsiteAssetPathForRequest:request];
+    return [self canLoadLocalAssetForRequest:request] || [self shouldOpenRequestInBrowser:request];
 }
 
 + (NSURLRequest*)canonicalRequestForRequest:(NSURLRequest*)request {
@@ -22,21 +23,31 @@
 - (void)startLoading {
     NSLog(@"START LOADING %@", self.request);
 
-    NSString *assetPath = [self.class localWebsiteAssetPathForRequest:self.request];
-    NSData *data = [NSData dataWithContentsOfFile:assetPath];
-
-    NSURLResponse *response = [[NSURLResponse alloc] initWithURL:self.request.URL
-                                                        MIMEType:[self.class mimeTypeForExtension:self.request.URL.path.pathExtension]
-                                           expectedContentLength:data.length
-                                                textEncodingName:nil];
-
-    [[self client] URLProtocol:self didReceiveResponse:response cacheStoragePolicy:NSURLCacheStorageNotAllowed];
-    [[self client] URLProtocol:self didLoadData:data];
-    [[self client] URLProtocolDidFinishLoading:self];
+    if ([self.class shouldOpenRequestInBrowser:self.request]) {
+        [[UIApplication sharedApplication] openURL:self.request.URL];
+    } else {
+        NSString *assetPath = [self.class localWebsiteAssetPathForRequest:self.request];
+        NSData *data = [NSData dataWithContentsOfFile:assetPath];
+        NSURLResponse *response = [[NSURLResponse alloc] initWithURL:self.request.URL
+                                                            MIMEType:[self.class mimeTypeForExtension:self.request.URL.path.pathExtension]
+                                               expectedContentLength:data.length
+                                                    textEncodingName:nil];
+        [[self client] URLProtocol:self didReceiveResponse:response cacheStoragePolicy:NSURLCacheStorageNotAllowed];
+        [[self client] URLProtocol:self didLoadData:data];
+        [[self client] URLProtocolDidFinishLoading:self];
+    }
 }
 
 - (void)stopLoading {
     NSLog(@"STOP LOADING %@", self.request);
+}
+
++ (BOOL)shouldOpenRequestInBrowser:(NSURLRequest *)request {
+    return [request.URL.query containsString:@"almondbirdpopup=true"] && [[UIApplication sharedApplication] canOpenURL:request.URL];
+}
+
++ (BOOL)canLoadLocalAssetForRequest:(NSURLRequest *)request {
+    return [self mimeTypeForExtension:request.URL.path.pathExtension] && [self localWebsiteAssetPathForRequest:request];
 }
 
 + (NSString *)localWebsiteAssetPathForRequest:(NSURLRequest *)request {
