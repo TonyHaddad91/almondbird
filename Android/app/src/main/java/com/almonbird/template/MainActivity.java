@@ -62,7 +62,7 @@ public class MainActivity extends Activity {
         webView.getSettings().setAllowFileAccessFromFileURLs(true);
         webView.getSettings().setAllowUniversalAccessFromFileURLs(true);
         webView.getSettings().setMediaPlaybackRequiresUserGesture(false);
-
+        CookieManager.getInstance().setAcceptCookie(true);
 
         if (Build.VERSION.SDK_INT >= 20) {
             webView.getSettings().setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
