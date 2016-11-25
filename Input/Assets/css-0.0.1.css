@@ -1,0 +1,86 @@
+body {
+				font-family: 'Arimo', sans-serif;
+				font-weight:700;
+				font-size:4vw;
+			}
+
+			.seplogo {
+				height:10vh
+			}
+
+			.menubutton {
+				position:absolute; top:2.5vh;  font-size:5vh
+			}
+			
+			.menubuttonback {
+				position:absolute; top:2.5vh; right:2.5vh;  font-size:5vh;	 height:10vh; 
+			}
+			
+			.categoryimage {
+					display:flex; align-items:center; justify-content:center; width:100vw; height:66.6vw;  -webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;
+			}
+
+			.categoryimage > div {
+				max-width:50%; background-color:black;color:white; padding:5px; border-radius:3px; padding-left:2vw; padding-right:2vw;
+			}
+			
+			.categorytitle {
+				margin-top:20px; margin-bottom:20px; color:#847d79;
+			}
+			.categorytitle > div {
+				border:3px solid #847d79;
+			}
+
+			.fa-bars {
+				color: #categorytitle;
+			}
+
+			.myitem {
+				width:100%; background-color:rgba(240,240,240, 0.2); border: 10px solid rgba(240,240,240, 0.2);
+				-webkit-box-shadow: 3px 3px 3px #777;
+				-moz-box-shadow: 3px 3px 3px #777;
+				box-shadow: 3px 3px 3px #777; position:relative; padding-top:4vw; margin-bottom:40px;
+			}
+			
+			.myitem > div > img { 
+				width:90vw;
+			}
+			
+			.myitemTitle {
+				text-align:center; width:100%; padding-top:14px; display:inline-block; font-size:1.1em; font-color:#847d79;
+			}
+			
+			.myitemOuterLink {
+				width:100%; text-align:right; margin-top:12px;
+			}
+			
+			.zeroeightem {
+				font-size:0.8em;
+			}
+			
+			.myitemInnerLink {
+				font-size:1.2em;display:inline-block; text-align:center; padding:10px;
+			}
+			
+			.sidemenuoption {
+				width:100%; padding-top:3vh; padding-bottom:3vh;
+				border:2px solid #847d79;
+				border-top:0;
+				border-left:0;
+				border-right:0;
+				padding-left:15px;
+			}
+			
+			.middlealigner {
+			  display: flex;
+			  align-items: center;
+			  justify-content: center;
+			}
+
+			#loading > img {
+					width:20vw;
+			}
+			
+			#loadingOverlayWhite > img {
+				width: 20vw;
+			}
