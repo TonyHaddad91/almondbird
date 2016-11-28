@@ -50,6 +50,7 @@ public class LollipopWebClient extends WebViewClient {
     public boolean shouldOverrideUrlLoading(WebView view, String url) {
         if (url.contains("almondbirdpopup=true")) {
             Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(i);
             return true;
         }
