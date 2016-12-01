@@ -108,6 +108,10 @@ end
 lines = IO.readlines('Output/iOS/SmartWebView/SmartWebView/Info.plist').map do |line|
   if line.include? 'smartwebviewscheme'
     "<string>#{deeplink_scheme}</string>"
+   elsif line.include? '<string>7.7</string>'
+   	"<string>#{versionName}</string>"
+   elsif line.include? '<string>222</string>'
+   	"<string>#{versionCode}</string>"
   else
     line
   end
