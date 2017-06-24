@@ -80,6 +80,7 @@ FileUtils.copy_entry('Input/Assets', 'Output/iOS/SmartWebView/SmartWebView/Asset
 FileUtils.copy_entry('Input/ios_icon', 'Output/iOS/SmartWebView/SmartWebView/Assets.xcassets/AppIcon.appiconset', false, false, true)
 FileUtils.copy_entry('Input/ios_splash', 'Output/iOS/SmartWebView/SmartWebView/Assets.xcassets/launch-icon.imageset', false, false, true)
 
+
 lines = IO.readlines('Output/iOS/SmartWebView/SmartWebView.xcodeproj/project.pbxproj').map do |line|
   if line.include? 'PRODUCT_BUNDLE_IDENTIFIER'
     "PRODUCT_BUNDLE_IDENTIFIER =#{app_id};"
@@ -89,9 +90,9 @@ lines = IO.readlines('Output/iOS/SmartWebView/SmartWebView.xcodeproj/project.pbx
     line
   end
 end
-File.open('Output/iOS/SmartWebView/SmartWebView.xcodeproj/project.pbxproj', 'w') do |file|
-  file.puts lines
-end
+#File.open('Output/iOS/SmartWebView/SmartWebView.xcodeproj/project.pbxproj', 'w') do |file|
+#  file.puts lines
+#end
 
 rgb_splash_color = (splash_color.match(/#(..?)(..?)(..?)/))[1..3]
 rgb_splash_color!.map { |x| x + x } if splash_color.size == 4
