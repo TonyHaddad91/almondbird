@@ -90,9 +90,10 @@ lines = IO.readlines('Output/iOS/SmartWebView/SmartWebView.xcodeproj/project.pbx
     line
   end
 end
-#File.open('Output/iOS/SmartWebView/SmartWebView.xcodeproj/project.pbxproj', 'w') do |file|
-#  file.puts lines
-#end
+
+File.open('Output/iOS/SmartWebView/SmartWebView.xcodeproj/project.pbxproj', 'w') do |file|
+  file.puts lines
+end
 
 rgb_splash_color = (splash_color.match(/#(..?)(..?)(..?)/))[1..3]
 rgb_splash_color!.map { |x| x + x } if splash_color.size == 4
